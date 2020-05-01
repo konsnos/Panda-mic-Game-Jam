@@ -23,6 +23,7 @@ public class ClientsFactory : MonoBehaviour
             hasGloves = instructions.glovesRequired ? r.Next(101) < 95 : false,
             hasSymptoms = instructions.symptoms ? r.Next(101) < 95 : false,
             hasRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
+            hasCorrectRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
             hasId = instructions.requestIdRequired ? r.Next(101) < 95 : false
         };
 
@@ -50,5 +51,6 @@ public struct ClientConfiguration
     public bool hasGloves;
     public bool hasSymptoms;
     public bool hasRequest;
+    public bool hasCorrectRequest;
     public bool hasId;
 }
