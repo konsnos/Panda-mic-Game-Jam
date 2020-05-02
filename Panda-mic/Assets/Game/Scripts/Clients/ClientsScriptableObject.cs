@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game
+namespace LineUp
 {
     /// <summary>
     /// Creates a scriptable object with data for all clients.

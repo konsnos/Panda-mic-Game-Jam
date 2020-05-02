@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Game
+namespace LineUp
 {
     public class GameplayManager : MonoBehaviour
     {
@@ -13,9 +13,8 @@ namespace Game
         [SerializeField] private ClientsManager clientsManager;
         [SerializeField] private ClientsFactory clientsFactory;
         [SerializeField] private AudioSource clientHandleAudio;
-        ///<summary>0 - correct, 1 - wrong</summary>
-        [Tooltip("0 - correct, 1 - wrong")]
-        [SerializeField] private AudioClip[] clientHandleAudios;
+
+        [SerializeField] private AudioClipsListScriptableObject clientHandleAudios;
 
         ///<summary>Difficulty [0-100]. The smaller the difficulty the harder the instructions.</summary>
         [Tooltip("Difficulty [0-100]. The smaller the difficulty the harder the instructions.")]
@@ -151,7 +150,7 @@ namespace Game
 
         private void PlayClientHandleAudio(bool isValid)
         {
-            clientHandleAudio.clip = isValid ? clientHandleAudios[0] : clientHandleAudios[1];
+            clientHandleAudio.clip = isValid ? clientHandleAudios.clips[0] : clientHandleAudios.clips[1];
             clientHandleAudio.Play();
         }
 

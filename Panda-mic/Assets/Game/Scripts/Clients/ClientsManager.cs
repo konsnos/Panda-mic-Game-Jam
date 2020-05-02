@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Game
+namespace LineUp
 {
     public class ClientsManager : MonoBehaviour
     {
@@ -61,7 +61,7 @@ namespace Game
 
                 isExitting = true;
 
-                Debug.Log("Exitted client, clients inside: " + ClientsInside);
+                //Debug.Log("Exitted client, clients inside: " + ClientsInside);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Game
         {
             clientsInside.Clear();
 
-            Debug.Log("Clients inside: " + ClientsInside);
+            //Debug.Log("Clients inside: " + ClientsInside);
         }
 
         private void OnWaiting(ClientData clientData, ClientConfiguration arg0)
@@ -114,7 +114,7 @@ namespace Game
         {
             clientsInside.Add(nextClient.client.ClientData);
 
-            Debug.Log("Entered. Clients inside: " + ClientsInside);
+            //Debug.Log("Entered. Clients inside: " + ClientsInside);
 
             if (nextExitTs < DateTime.UtcNow.Ticks)
             {

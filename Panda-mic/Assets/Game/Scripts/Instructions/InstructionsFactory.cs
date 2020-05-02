@@ -1,5 +1,5 @@
 ﻿
-namespace Game
+namespace LineUp
 {
     public class InstructionsFactory
     {

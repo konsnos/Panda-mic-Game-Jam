@@ -1,8 +1,8 @@
-﻿using Game;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using LineUp;
 
-namespace Game_Editor
+namespace LineUp_Editor
 {
     [CustomEditor(typeof(GameplayManager))]
     public class GameplayManagerEditor : Editor

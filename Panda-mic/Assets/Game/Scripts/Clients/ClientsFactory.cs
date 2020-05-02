@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Game
+namespace LineUp
 {
     [Serializable]
     public class ClientsFactory
@@ -24,7 +24,7 @@ namespace Game
                 temperature = r.Next(101) < 95 ? UnityEngine.Random.Range(36.5f, instructions.temperature) : UnityEngine.Random.Range(instructions.temperature + 0.1f, 40f),
                 hasMask = instructions.maskRequired ? r.Next(101) < 95 : false,
                 hasGloves = instructions.glovesRequired ? r.Next(101) < 95 : false,
-                hasSymptoms = instructions.symptoms ? r.Next(101) < 95 : false,
+                hasSymptoms = instructions.symptoms ? r.Next(101) > 95 : false,
                 hasRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
                 hasCorrectRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
                 hasId = instructions.requestIdRequired ? r.Next(101) < 95 : false,

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game
+namespace LineUp
 {
     public class InstructionsPanel : MonoBehaviour
     {
@@ -48,38 +48,61 @@ namespace Game
         public bool IsValid(ClientConfiguration clientConfiguration, int amountOfPeopleInside)
         {
             if (configuration.amountOfPeopleInside < amountOfPeopleInside + 1)
+            {
+                Debug.Log("Failed amount");
                 return false;
+            }
+                
 
             if (clientConfiguration.temperature > configuration.temperature)
+            {
+                Debug.Log("Failed temperature");
                 return false;
+            }
 
             if (configuration.maskRequired)
             {
                 if (!clientConfiguration.hasMask)
+                {
+                    Debug.Log("Has mask");
                     return false;
+                }
             }
 
             if (configuration.glovesRequired)
             {
                 if (!clientConfiguration.hasGloves)
+                {
+                    Debug.Log("Has gloves");
                     return false;
+                }
             }
 
             if (configuration.symptoms)
             {
-                if (!clientConfiguration.hasSymptoms)
+                if (clientConfiguration.hasSymptoms)
+                {
+                    Debug.Log("Has symptoms");
                     return false;
+                }
+                    
             }
 
             if (configuration.requestIdRequired)
             {
-                if (!clientConfiguration.hasRequest || !clientConfiguration.hasCorrectRequest)
+                if (!clientConfiguration.hasId || !clientConfiguration.hasRequest || !clientConfiguration.hasCorrectRequest)
+                {
+                    Debug.Log("Wrong request");
                     return false;
+                }
             }
 
             if (clientConfiguration.hasEasterEgg)
+            {
+                Debug.Log("Has easter egg");
                 return false;
-
+            }
+            
             return true;
         }
 
