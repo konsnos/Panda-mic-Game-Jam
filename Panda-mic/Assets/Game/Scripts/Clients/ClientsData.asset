@@ -29,3 +29,68 @@ MonoBehaviour:
     mask: {fileID: 21300000, guid: 2af58d1a2c10f3246b5e3b9003478e77, type: 3}
     gloves: {fileID: 21300000, guid: eb774dce3d37bab428c09894812c1e89, type: 3}
     id: {fileID: 21300000, guid: a47e0fb9c4d662343a86509797c015bb, type: 3}
+  - person: {fileID: 21300000, guid: e32fe7e714d4eaf42a2c3f85e44f2c27, type: 3}
+    mask: {fileID: 21300000, guid: 8a546c58756be654f8f088501fada587, type: 3}
+    gloves: {fileID: 21300000, guid: 297fd6cbdc17091409d90b75a18657af, type: 3}
+    id: {fileID: 21300000, guid: d8e296916d4892642b3a746f4f6e614e, type: 3}
+  - person: {fileID: 21300000, guid: 376fa942f6b554a4395ed8bdf8aaca1d, type: 3}
+    mask: {fileID: 21300000, guid: 71793c04a04e9a443875decef09a4eee, type: 3}
+    gloves: {fileID: 21300000, guid: 724649fb1b1ccbb4c87e6221eeab4035, type: 3}
+    id: {fileID: 21300000, guid: 940da04a676ecc2479c5254e318b6878, type: 3}
+  - person: {fileID: 21300000, guid: d5c92d57d99592c49ae82d3e429572f5, type: 3}
+    mask: {fileID: 21300000, guid: bdb4ff2dfefe3424faef23d69b12b304, type: 3}
+    gloves: {fileID: 21300000, guid: 1ad2e08df72b08e4a8704bfbfc39706e, type: 3}
+    id: {fileID: 21300000, guid: fa135a56369033747b52b0585371811a, type: 3}
+  - person: {fileID: 21300000, guid: 31229b8470d71ab4dab0d88c9dc7c89a, type: 3}
+    mask: {fileID: 21300000, guid: fa6e7cebe0f2e3c4bb459657c6392f74, type: 3}
+    gloves: {fileID: 21300000, guid: 1c6cf2d2d526646409ae059e37360938, type: 3}
+    id: {fileID: 21300000, guid: 7d62f69833869ec4ebb13e2621ec432e, type: 3}
+  - person: {fileID: 21300000, guid: dccdeb0aadc7db0469a522459c019917, type: 3}
+    mask: {fileID: 21300000, guid: 4ec0fb367c26fe945ab56f8686631bcf, type: 3}
+    gloves: {fileID: 21300000, guid: 3ad23cb2eb895254a9e8af1d0aac2521, type: 3}
+    id: {fileID: 21300000, guid: 254ca030df91a4140b30c95f770feba8, type: 3}
+  - person: {fileID: 21300000, guid: c3143d00008349e4393b0e4313cdc101, type: 3}
+    mask: {fileID: 21300000, guid: 6cbaf6556dff78345b2451fcfcbbfe18, type: 3}
+    gloves: {fileID: 21300000, guid: 62ce2cebd60f66149979676de59c2c00, type: 3}
+    id: {fileID: 21300000, guid: d7196b562489f56408d4da190aac562b, type: 3}
+  - person: {fileID: 21300000, guid: 58dcef586dded5a458072bf2b7d26820, type: 3}
+    mask: {fileID: 21300000, guid: 7dc0d617e70883647a454ac4bf9a653d, type: 3}
+    gloves: {fileID: 21300000, guid: 21118fbd3ce85f448a2bb8e61256dcc3, type: 3}
+    id: {fileID: 21300000, guid: e2cfd332073bbf3458e81873f4e5477e, type: 3}
+  - person: {fileID: 21300000, guid: d9ecf051c7dfaa14c8493ace2e6f90c9, type: 3}
+    mask: {fileID: 21300000, guid: 0d2e43d1434d69e4586fc691558a0661, type: 3}
+    gloves: {fileID: 21300000, guid: 3655a11a3887caf48b493d66c9376f2b, type: 3}
+    id: {fileID: 21300000, guid: c88bd511dfbd3e84188202ff3d4d8ab3, type: 3}
+  - person: {fileID: 21300000, guid: 439b65f00bf5bce4485482ea0c0eca56, type: 3}
+    mask: {fileID: 21300000, guid: 8b6fc7b739e78064fb007297df6ef06c, type: 3}
+    gloves: {fileID: 21300000, guid: 973f77faa5937be48a02599499f70a58, type: 3}
+    id: {fileID: 21300000, guid: 93561aedb7b9b0249a72f7477dd5bb6a, type: 3}
+  - person: {fileID: 21300000, guid: b3728ae2aad2c564db37f406cc2121b5, type: 3}
+    mask: {fileID: 21300000, guid: 4c649e006e5c47143b9a28d8f94339af, type: 3}
+    gloves: {fileID: 21300000, guid: ba5870fc3db9cc447b107a49a2b9c97e, type: 3}
+    id: {fileID: 21300000, guid: e5307c9cf8b84e24d800fff05983092a, type: 3}
+  - person: {fileID: 21300000, guid: b8f2c0b5bcfc9c44899a7b97bb141c1f, type: 3}
+    mask: {fileID: 21300000, guid: caab5239aa0a773419bf31ceddf8c98e, type: 3}
+    gloves: {fileID: 21300000, guid: 6ff03ac7f20706b4a8deaea31d36a3ec, type: 3}
+    id: {fileID: 21300000, guid: 3db655887a97df145b239b4955f3ad11, type: 3}
+  - person: {fileID: 21300000, guid: 85cbf27f8c9f5e94e97f74547b4ab736, type: 3}
+    mask: {fileID: 21300000, guid: 9a8eea3df90516e42926d1d58f4a7e12, type: 3}
+    gloves: {fileID: 21300000, guid: 029b291570e08b840b2639faad9abce8, type: 3}
+    id: {fileID: 21300000, guid: 0fb6d0891f599fb4fbb421bdc63dfa2e, type: 3}
+  - person: {fileID: 21300000, guid: f4ec152b7616d0e4b8062882faa6ad6b, type: 3}
+    mask: {fileID: 21300000, guid: 1cca8598e1c5c9342a3c5be21549de6e, type: 3}
+    gloves: {fileID: 21300000, guid: dc404afbf73aef04597fd83c939b6e02, type: 3}
+    id: {fileID: 21300000, guid: fb280becc305fb940a4dc0f8ae6f8dfd, type: 3}
+  - person: {fileID: 21300000, guid: 858fe10617829bb45b543c9811c71c87, type: 3}
+    mask: {fileID: 21300000, guid: 28cb40f398e599d49aa9be6b80b8590b, type: 3}
+    gloves: {fileID: 21300000, guid: bae4a8cd0a51f504799750968f79cebd, type: 3}
+    id: {fileID: 21300000, guid: 7d44388fb2e2d79478efb5309a9837d9, type: 3}
+  - person: {fileID: 21300000, guid: bf6ca400a0a3d2f458648f3f940a39be, type: 3}
+    mask: {fileID: 21300000, guid: b80c534d03835af458ab5f39ab9d0aa0, type: 3}
+    gloves: {fileID: 21300000, guid: 78e69499058d0e8459c8450efbffbfac, type: 3}
+    id: {fileID: 21300000, guid: cb7f2648db42c6244bade3c896a375da, type: 3}
+  - person: {fileID: 21300000, guid: c46a0dd53be2bd9499684b71d1ccbdeb, type: 3}
+    mask: {fileID: 21300000, guid: 6de718e45859624408f2476063764ff6, type: 3}
+    gloves: {fileID: 21300000, guid: d59060f057451b2449e80d6c172a8e89, type: 3}
+    id: {fileID: 21300000, guid: f4a04668bd305e24c86776588b2786eb, type: 3}
+  pandaId: {fileID: 21300000, guid: a15433c9db5983a45a56fc9674f72400, type: 3}

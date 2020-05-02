@@ -25,7 +25,7 @@ namespace Game
         public UnityEvent OnNextClientHandledEvent;
 
         private List<ClientData> clientsInside;
-        
+
         ///<summary>Amount of clients inside.</summary>
         public int ClientsInside { get { return clientsInside.Count; } }
 
@@ -82,6 +82,8 @@ namespace Game
             AcceptedEvent?.Invoke(nextClient.client.ClientConfiguration);
 
             nextClient.Accept();
+
+            clientControls.ResetControls();
         }
 
         public void RejectClient()
@@ -89,6 +91,8 @@ namespace Game
             RejectedEvent?.Invoke(nextClient.client.ClientConfiguration);
 
             nextClient.Reject();
+
+            clientControls.ResetControls();
         }
 
         private void OnExited()
@@ -122,10 +126,8 @@ namespace Game
 
         private void CalculateNextExit()
         {
-            float exitInSeconds = UnityEngine.Random.Range(1f, 6f);
+            float exitInSeconds = UnityEngine.Random.Range(2f, 6f);
             nextExitTs = DateTime.UtcNow.Ticks + (long)(exitInSeconds * TimeSpan.TicksPerSecond);
-
-            Debug.Log("Exit in seconds: " + exitInSeconds);
         }
 
         public void BringNextClient(System.Tuple<ClientData, ClientConfiguration> tuple)

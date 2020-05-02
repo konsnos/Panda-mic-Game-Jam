@@ -10,6 +10,7 @@ namespace Game
     {
         ///<summary>Array of available clients.</summary>
         public ClientData[] clients;
+        public Sprite pandaId;
     }
 
     [System.Serializable]
