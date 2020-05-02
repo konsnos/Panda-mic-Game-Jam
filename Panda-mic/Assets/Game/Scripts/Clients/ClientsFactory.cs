@@ -27,7 +27,8 @@ namespace Game
                 hasSymptoms = instructions.symptoms ? r.Next(101) < 95 : false,
                 hasRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
                 hasCorrectRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
-                hasId = instructions.requestIdRequired ? r.Next(101) < 95 : false
+                hasId = instructions.requestIdRequired ? r.Next(101) < 95 : false,
+                hasEasterEgg = instructions.requestIdRequired ? r.Next(101) < 10 : false
             };
 
             Tuple<ClientData, ClientConfiguration> tuple = new Tuple<ClientData, ClientConfiguration>(clientData, clientConfiguration);
@@ -44,10 +45,11 @@ namespace Game
         public bool hasRequest;
         public bool hasCorrectRequest;
         public bool hasId;
+        public bool hasEasterEgg;
 
         public override string ToString()
         {
-            return $"Temperature {temperature:N1}, has mask: {hasMask}, has gloves: {hasGloves}, has symptoms: {hasSymptoms}, has request: {hasRequest}, has correct request {hasCorrectRequest}, has id: {hasId}";
+            return $"Temperature {temperature:N1}, has mask: {hasMask}, has gloves: {hasGloves}, has symptoms: {hasSymptoms}, has request: {hasRequest}, has correct request {hasCorrectRequest}, has id: {hasId}, easter egg: {hasEasterEgg}";
         }
     }
 }

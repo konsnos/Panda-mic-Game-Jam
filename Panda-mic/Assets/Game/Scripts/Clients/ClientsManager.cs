@@ -151,6 +151,8 @@ namespace Game
         public GameObject smsGO;
         public TMP_Text smsTxt;
         public GameObject buttonsGO;
+        [SerializeField]
+        private Sprite pandaId;
 
         private static string[] wrongRequest = new string[]
         {
@@ -170,8 +172,17 @@ namespace Game
         public void UpdateControls(ClientData clientData, ClientConfiguration clientConfiguration)
         {
             thermometerTxt.text = clientConfiguration.temperature.ToString("N1");
-            idGO.SetActive(clientConfiguration.hasId);
-            idImg.sprite = clientData.id;
+            if (clientConfiguration.hasEasterEgg)
+            {
+                // Easter egg
+                idGO.SetActive(clientConfiguration.hasId);
+                idImg.sprite = pandaId;
+            }
+            else
+            {
+                idGO.SetActive(clientConfiguration.hasId);
+                idImg.sprite = clientData.id;
+            }
             smsGO.SetActive(clientConfiguration.hasRequest);
             smsTxt.text = clientConfiguration.hasCorrectRequest ? "supermarket" : wrongRequest[UnityEngine.Random.Range(0, wrongRequest.Length)];
             buttonsGO.SetActive(true);

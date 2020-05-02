@@ -77,6 +77,9 @@ namespace Game
                     return false;
             }
 
+            if (clientConfiguration.hasEasterEgg)
+                return false;
+
             return true;
         }
 

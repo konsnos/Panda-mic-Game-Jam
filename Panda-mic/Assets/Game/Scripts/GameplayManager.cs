@@ -78,7 +78,6 @@ namespace Game
             long remainingTime = gameEndTs - DateTime.UtcNow.Ticks;
             double difficultyNormalised = remainingTime / (double)totalTime;
             difficulty = (int)(difficultyNormalised * 100);
-            Debug.Log("New difficulty: " + difficulty);
             instructionsConfiguration = instructionsFactory.GetNewInstructions(difficulty);
             instructionsPanel.LoadConfiguration(instructionsConfiguration);
         }
