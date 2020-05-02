@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionType: 0
+  text: {fileID: 8734311397454947495}
   OnClickedEvent:
     m_PersistentCalls:
       m_Calls: []
