@@ -12,12 +12,12 @@ namespace Game
         private static int rejectParam = Animator.StringToHash("reject");
         private static int exitParam = Animator.StringToHash("exit");
 
-        [HideInInspector]
         public Client client;
 
         public UnityEvent ExitedEvent;
         public UnityEvent EnteredEvent;
         public UnityEvent RejectedEvent;
+        public WaitingEvent WaitingEvent;
 
         public void BringNext()
         {
@@ -53,5 +53,15 @@ namespace Game
         {
             RejectedEvent?.Invoke();
         }
+
+        public void TriggerWaiting()
+        {
+            WaitingEvent?.Invoke(client.ClientData, client.ClientConfiguration);
+        }
+    }
+
+    [System.Serializable]
+    public class WaitingEvent : UnityEvent<ClientData, ClientConfiguration>
+    {
     }
 }

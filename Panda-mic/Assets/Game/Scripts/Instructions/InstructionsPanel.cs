@@ -13,6 +13,14 @@ namespace Game
 
         private InstructionsConfiguration configuration;
 
+        private void Start()
+        {
+            foreach (InstructionLine item in instructions)
+            {
+                item.OnClickedEvent.AddListener(OnInstructionClicked);
+            }
+        }
+
         public void LoadConfiguration(InstructionsConfiguration newConfiguration)
         {
             configuration = newConfiguration;
@@ -24,10 +32,52 @@ namespace Game
             instructions[(int)InstructionType.request].gameObject.SetActive(configuration.requestIdRequired);
             instructions[(int)InstructionType.amount].UpdateText($"<={configuration.amountOfPeopleInside}");
 
-            foreach (InstructionLine item in instructions)
+            // Open instructions
+            if (!isOpen)
             {
-                item.OnClickedEvent.AddListener(OnInstructionClicked);
+                OpenCloseInstructionsClicked();
             }
+        }
+
+        /// <summary>
+        /// Checks if the client is valid to enter.
+        /// </summary>
+        /// <param name="clientConfiguration"></param>
+        /// <param name="amountOfPeopleInside"></param>
+        /// <returns></returns>
+        public bool IsValid(ClientConfiguration clientConfiguration, int amountOfPeopleInside)
+        {
+            if (configuration.amountOfPeopleInside < amountOfPeopleInside + 1)
+                return false;
+
+            if (clientConfiguration.temperature > configuration.temperature)
+                return false;
+
+            if (configuration.maskRequired)
+            {
+                if (!clientConfiguration.hasMask)
+                    return false;
+            }
+
+            if (configuration.glovesRequired)
+            {
+                if (!clientConfiguration.hasGloves)
+                    return false;
+            }
+
+            if (configuration.symptoms)
+            {
+                if (!clientConfiguration.hasSymptoms)
+                    return false;
+            }
+
+            if (configuration.requestIdRequired)
+            {
+                if (!clientConfiguration.hasRequest || !clientConfiguration.hasCorrectRequest)
+                    return false;
+            }
+
+            return true;
         }
 
         private void OnInstructionClicked(InstructionType arg0)

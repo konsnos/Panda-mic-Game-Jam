@@ -25,6 +25,29 @@ namespace Game
         {
             CreateNewConfiguration();
             BringNewClient();
+
+            clientsManager.AcceptedEvent.AddListener(OnAccepted);
+            clientsManager.RejectedEvent.AddListener(OnRejected);
+            clientsManager.OnNextClientHandledEvent.AddListener(OnNextClientHandled);
+        }
+
+        private void OnNextClientHandled()
+        {
+            BringNewClient();
+        }
+
+        private void OnAccepted(ClientConfiguration arg0)
+        {
+            bool isValid = instructionsPanel.IsValid(arg0, clientsManager.ClientsInside);
+
+            Debug.Log("Accepted valid: " + isValid);
+        }
+
+        private void OnRejected(ClientConfiguration arg0)
+        {
+            bool isValid = instructionsPanel.IsValid(arg0, clientsManager.ClientsInside);
+
+            Debug.Log("Rejected valid: " + isValid);
         }
 
         private void BringNewClient()

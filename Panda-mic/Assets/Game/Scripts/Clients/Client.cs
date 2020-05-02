@@ -16,11 +16,28 @@ namespace Game
         {
             ClientData = tuple.Item1;
 
+            ClientConfiguration = tuple.Item2;
+
+            UpdateSprites();
+        }
+
+        public void LoadClient(ClientData newClientData, ClientConfiguration configuration)
+        {
+            ClientData = newClientData;
+
+            ClientConfiguration = configuration;
+
+            UpdateSprites();
+        }
+
+        private void UpdateSprites()
+        {
             clientImg.sprite = ClientData.person;
             maskImg.sprite = ClientData.mask;
             glovesImg.sprite = ClientData.gloves;
 
-            ClientConfiguration = tuple.Item2;
+            maskImg.gameObject.SetActive(ClientConfiguration.hasMask);
+            glovesImg.gameObject.SetActive(ClientConfiguration.hasGloves);
         }
     }
 }

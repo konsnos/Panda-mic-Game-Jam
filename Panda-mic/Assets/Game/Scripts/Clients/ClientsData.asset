@@ -17,3 +17,11 @@ MonoBehaviour:
     mask: {fileID: 21300000, guid: d7f6be75db9451d4e9b6994047faa23f, type: 3}
     gloves: {fileID: 21300000, guid: 41e601f45766c454d989094d085a8cb5, type: 3}
     id: {fileID: 21300000, guid: a2e5d737c2c466f49a2d44e95c6f16f5, type: 3}
+  - person: {fileID: 21300000, guid: 02cff37721113e54ca81d4891a213196, type: 3}
+    mask: {fileID: 21300000, guid: 38624c33caaba2f42aafc4e5e15d4511, type: 3}
+    gloves: {fileID: 21300000, guid: a54504d1204bb9a4091f2e45016945b7, type: 3}
+    id: {fileID: 21300000, guid: a778a37f71b3d9848862502846b3a5b3, type: 3}
+  - person: {fileID: 21300000, guid: b71f4e6ce77cb744bb1d3b0a288d0c9b, type: 3}
+    mask: {fileID: 21300000, guid: 0ae6b40126d8dbf438a9422041252a74, type: 3}
+    gloves: {fileID: 21300000, guid: 67d5b8df7a4920245a5e99823a2f7cec, type: 3}
+    id: {fileID: 21300000, guid: f4349d01099f7014699f671a371c4769, type: 3}
