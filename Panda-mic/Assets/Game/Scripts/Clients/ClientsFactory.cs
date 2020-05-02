@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    [Serializable]
     public class ClientsFactory
     {
         [SerializeField] private ClientsScriptableObject clientsData;

@@ -6,6 +6,10 @@ namespace Game
     {
         [SerializeField] private InstructionsPanel instructionsPanel;
         private InstructionsFactory instructionsFactory;
+        private InstructionsConfiguration instructionsConfiguration;
+
+        [SerializeField] private ClientsManager clientsManager;
+        [SerializeField] private ClientsFactory clientsFactory;
 
         ///<summary>Difficulty [0-100]. The smaller the difficulty the harder the instructions.</summary>
         [Tooltip("Difficulty [0-100]. The smaller the difficulty the harder the instructions.")]
@@ -20,11 +24,18 @@ namespace Game
         private void Start()
         {
             CreateNewConfiguration();
+            BringNewClient();
+        }
+
+        private void BringNewClient()
+        {
+            clientsManager.BringNextClient(clientsFactory.GetNewClient(instructionsConfiguration));
         }
 
         public void CreateNewConfiguration()
         {
-            instructionsPanel.LoadConfiguration(instructionsFactory.GetNewInstructions(difficulty));
+            instructionsConfiguration = instructionsFactory.GetNewInstructions(difficulty);
+            instructionsPanel.LoadConfiguration(instructionsConfiguration);
         }
     }
 }
