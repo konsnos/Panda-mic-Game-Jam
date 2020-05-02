@@ -40,13 +40,14 @@ namespace Game
 
             nextClient.EnteredEvent.AddListener(OnEntered);
             nextClient.RejectedEvent.AddListener(OnRejected);
-            nextClient.ExitedEvent.AddListener(OnExited);
             nextClient.WaitingEvent.AddListener(OnWaiting);
+
+            exittingClient.ExitedEvent.AddListener(OnExited);
         }
 
         private void Update()
         {
-            if (nextExitTs > DateTime.UtcNow.Ticks && !isExitting)
+            if ((nextExitTs < DateTime.UtcNow.Ticks) && !isExitting)
             {
                 CalculateNextExit();
 
@@ -56,10 +57,11 @@ namespace Game
                 ClientData exitClientData = clientsInside[randomExit];
                 clientsInside.RemoveAt(randomExit);
                 exittingClient.client.LoadClient(exitClientData, new ClientConfiguration());
+                exittingClient.Exit();
 
                 isExitting = true;
 
-                Debug.Log("Clients inside: " + ClientsInside);
+                Debug.Log("Exitted client, clients inside: " + ClientsInside);
             }
         }
 
@@ -79,11 +81,7 @@ namespace Game
         {
             AcceptedEvent?.Invoke(nextClient.client.ClientConfiguration);
 
-            clientsInside.Add(nextClient.client.ClientData);
-
             nextClient.Accept();
-
-            Debug.Log("Clients inside: " + ClientsInside);
         }
 
         public void RejectClient()
@@ -110,6 +108,10 @@ namespace Game
 
         private void OnEntered()
         {
+            clientsInside.Add(nextClient.client.ClientData);
+
+            Debug.Log("Entered. Clients inside: " + ClientsInside);
+
             if (nextExitTs < DateTime.UtcNow.Ticks)
             {
                 CalculateNextExit();
@@ -120,7 +122,10 @@ namespace Game
 
         private void CalculateNextExit()
         {
-            nextExitTs = DateTime.UtcNow.Ticks + (long)(UnityEngine.Random.Range(0f, 8f) * TimeSpan.TicksPerSecond);
+            float exitInSeconds = UnityEngine.Random.Range(1f, 6f);
+            nextExitTs = DateTime.UtcNow.Ticks + (long)(exitInSeconds * TimeSpan.TicksPerSecond);
+
+            Debug.Log("Exit in seconds: " + exitInSeconds);
         }
 
         public void BringNextClient(System.Tuple<ClientData, ClientConfiguration> tuple)
