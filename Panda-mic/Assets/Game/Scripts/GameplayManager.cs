@@ -38,6 +38,7 @@ namespace LineUp
         private Score score;
 
         [SerializeField] private GameObject startPanel;
+        [SerializeField] private EndPanel endPanel;
         private bool isPlaying = false;
 
         private void Awake()
@@ -60,7 +61,7 @@ namespace LineUp
             {
                 if (gameEndTs < DateTime.UtcNow.Ticks)
                 {
-                    Debug.LogWarning("Game ended!");
+                    GameStop();
                 }
 
                 if (difficultyIncreaseTs < DateTime.UtcNow.Ticks)
@@ -71,21 +72,31 @@ namespace LineUp
             }
         }
 
-        public void StartGame()
+        public void GameStop()
         {
+            endPanel.Show(score);
+
+            isPlaying = false;
+        }
+
+        public void GameStart()
+        {
+            endPanel.gameObject.SetActive(false);
             startPanel.SetActive(false);
 
             isPlaying = true;
 
             score.Reset();
 
-            CreateNewConfiguration();
-            BringNewClient();
+            difficulty = 95;
 
             gameStartTs = DateTime.UtcNow.Ticks;
             difficultyIncreaseTs = gameStartTs + (difficultyIncrease * TimeSpan.TicksPerSecond);
             gameEndTs = gameStartTs + (totalTime * TimeSpan.TicksPerSecond);
             quarantineDays = 1;
+
+            CreateNewConfiguration();
+            BringNewClient();
             UpdateQuarantineDaysUI();
         }
 
@@ -114,7 +125,10 @@ namespace LineUp
 
         private void OnNextClientHandled()
         {
-            BringNewClient();
+            if (isPlaying)
+            {
+                BringNewClient();
+            }
         }
 
         private void OnAccepted(ClientConfiguration arg0)
