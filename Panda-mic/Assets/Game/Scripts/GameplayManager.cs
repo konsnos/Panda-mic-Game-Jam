@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace Game
@@ -11,6 +12,10 @@ namespace Game
 
         [SerializeField] private ClientsManager clientsManager;
         [SerializeField] private ClientsFactory clientsFactory;
+        [SerializeField] private AudioSource clientHandleAudio;
+        ///<summary>0 - correct, 1 - wrong</summary>
+        [Tooltip("0 - correct, 1 - wrong")]
+        [SerializeField] private AudioClip[] clientHandleAudios;
 
         ///<summary>Difficulty [0-100]. The smaller the difficulty the harder the instructions.</summary>
         [Tooltip("Difficulty [0-100]. The smaller the difficulty the harder the instructions.")]
@@ -24,11 +29,17 @@ namespace Game
         ///<summary>Difficulty increase after seconds.</summary>
         [Tooltip("Difficulty increase after seconds.")]
         [SerializeField] private int difficultyIncrease;
+        [SerializeField] private TMP_Text quarantineDaysTxt;
+
         private long difficultyIncreaseTs;
         private long gameEndTs;
         private long gameStartTs;
+        private int quarantineDays;
 
         private Score score;
+
+        [SerializeField] private GameObject startPanel;
+        private bool isPlaying = false;
 
         private void Awake()
         {
@@ -39,32 +50,44 @@ namespace Game
 
         private void Start()
         {
+            clientsManager.AcceptedEvent.AddListener(OnAccepted);
+            clientsManager.RejectedEvent.AddListener(OnRejected);
+            clientsManager.OnNextClientHandledEvent.AddListener(OnNextClientHandled);
+        }
+
+        private void Update()
+        {
+            if (isPlaying)
+            {
+                if (gameEndTs < DateTime.UtcNow.Ticks)
+                {
+                    Debug.LogWarning("Game ended!");
+                }
+
+                if (difficultyIncreaseTs < DateTime.UtcNow.Ticks)
+                {
+                    IncreaseDifficulty();
+                    CalculateNextDifficultyIncrease();
+                }
+            }
+        }
+
+        public void StartGame()
+        {
+            startPanel.SetActive(false);
+
+            isPlaying = true;
+
             score.Reset();
 
             CreateNewConfiguration();
             BringNewClient();
 
-            clientsManager.AcceptedEvent.AddListener(OnAccepted);
-            clientsManager.RejectedEvent.AddListener(OnRejected);
-            clientsManager.OnNextClientHandledEvent.AddListener(OnNextClientHandled);
-
             gameStartTs = DateTime.UtcNow.Ticks;
             difficultyIncreaseTs = gameStartTs + (difficultyIncrease * TimeSpan.TicksPerSecond);
             gameEndTs = gameStartTs + (totalTime * TimeSpan.TicksPerSecond);
-        }
-
-        private void Update()
-        {
-            if (gameEndTs < DateTime.UtcNow.Ticks)
-            {
-                Debug.LogWarning("Game ended!");
-            }
-
-            if (difficultyIncreaseTs < DateTime.UtcNow.Ticks)
-            {
-                IncreaseDifficulty();
-                CalculateNextDifficultyIncrease();
-            }
+            quarantineDays = 1;
+            UpdateQuarantineDaysUI();
         }
 
         private void CalculateNextDifficultyIncrease()
@@ -80,6 +103,14 @@ namespace Game
             difficulty = (int)(difficultyNormalised * 100);
             instructionsConfiguration = instructionsFactory.GetNewInstructions(difficulty);
             instructionsPanel.LoadConfiguration(instructionsConfiguration);
+
+            quarantineDays++;
+            UpdateQuarantineDaysUI();
+        }
+
+        private void UpdateQuarantineDaysUI()
+        {
+            quarantineDaysTxt.text = $"Quarantine day: {quarantineDays}";
         }
 
         private void OnNextClientHandled()
@@ -98,6 +129,8 @@ namespace Game
                 score.ClientsAcceptedWrong++;
             }
 
+            PlayClientHandleAudio(isValid);
+
             Debug.Log("Accepted valid: " + isValid);
         }
 
@@ -111,7 +144,15 @@ namespace Game
                 score.ClientsRejectedWrong++;
             }
 
+            PlayClientHandleAudio(!isValid);
+
             Debug.Log("Rejected valid: " + isValid);
+        }
+
+        private void PlayClientHandleAudio(bool isValid)
+        {
+            clientHandleAudio.clip = isValid ? clientHandleAudios[0] : clientHandleAudios[1];
+            clientHandleAudio.Play();
         }
 
         private void BringNewClient()

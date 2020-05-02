@@ -146,6 +146,7 @@ namespace Game
     public class ClientControls
     {
         public TMP_Text thermometerTxt;
+        public AudioSource thermometerAudio;
         public GameObject idGO;
         public Image idImg;
         public GameObject smsGO;
@@ -172,6 +173,7 @@ namespace Game
         public void UpdateControls(ClientData clientData, ClientConfiguration clientConfiguration)
         {
             thermometerTxt.text = clientConfiguration.temperature.ToString("N1");
+            thermometerAudio.Play();
             if (clientConfiguration.hasEasterEgg)
             {
                 // Easter egg

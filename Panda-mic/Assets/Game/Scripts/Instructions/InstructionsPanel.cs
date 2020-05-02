@@ -9,7 +9,7 @@ namespace Game
         [Header("Animation")]
         [SerializeField] private Animator animator;
         private static int isOpenParam = Animator.StringToHash("isOpen");
-        private bool isOpen = true;
+        private bool isOpen = false;
 
         private InstructionsConfiguration configuration;
 
