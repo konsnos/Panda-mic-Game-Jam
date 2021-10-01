@@ -19,19 +19,21 @@ namespace LineUp
             ClientData clientData = clientsData.clients[randomClient];
 
             System.Random r = new System.Random();
+            int chance = 95;
+            int requestIdChance = 10;
             ClientConfiguration clientConfiguration = new ClientConfiguration
             {
-                temperature = r.Next(101) < 95 ? UnityEngine.Random.Range(36.5f, instructions.temperature) : UnityEngine.Random.Range(instructions.temperature + 0.1f, 40f),
-                hasMask = instructions.maskRequired ? r.Next(101) < 95 : false,
-                hasGloves = instructions.glovesRequired ? r.Next(101) < 95 : false,
-                hasSymptoms = instructions.symptoms ? r.Next(101) > 95 : false,
-                hasRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
-                hasCorrectRequest = instructions.requestIdRequired ? r.Next(101) < 95 : false,
-                hasId = instructions.requestIdRequired ? r.Next(101) < 95 : false,
-                hasEasterEgg = instructions.requestIdRequired ? r.Next(101) < 10 : false
+                temperature = r.Next(101) < chance ? UnityEngine.Random.Range(36.5f, instructions.temperature) : UnityEngine.Random.Range(instructions.temperature + 0.1f, 40f),
+                hasMask = instructions.maskRequired ? r.Next(101) < chance : false,
+                hasGloves = instructions.glovesRequired ? r.Next(101) < chance : false,
+                hasSymptoms = instructions.symptoms ? r.Next(101) > chance : false,
+                hasRequest = instructions.requestIdRequired ? r.Next(101) < chance : false,
+                hasCorrectRequest = instructions.requestIdRequired ? r.Next(101) < chance : false,
+                hasId = instructions.requestIdRequired ? r.Next(101) < chance : false,
+                hasEasterEgg = instructions.requestIdRequired ? r.Next(101) < requestIdChance : false
             };
 
-            Tuple<ClientData, ClientConfiguration> tuple = new Tuple<ClientData, ClientConfiguration>(clientData, clientConfiguration);
+            var tuple = new Tuple<ClientData, ClientConfiguration>(clientData, clientConfiguration);
             return tuple;
         }
     }

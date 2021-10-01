@@ -47,7 +47,7 @@ namespace LineUp
         {
             if (ClientConfiguration.hasSymptoms)
             {
-                int clip = UnityEngine.Random.Range(0, symptomsClips.clips.Length);
+                int clip = Random.Range(0, symptomsClips.clips.Length);
                 symptomsAudioSource.clip = symptomsClips.clips[clip];
                 symptomsAudioSource.Play();
             }
