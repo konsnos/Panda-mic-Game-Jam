@@ -107,9 +107,9 @@ namespace LineUp
 
         private void IncreaseDifficulty()
         {
-            long totalTime = gameEndTs - gameStartTs;
+            long totalTimeElapsed = gameEndTs - gameStartTs;
             long remainingTime = gameEndTs - DateTime.UtcNow.Ticks;
-            double difficultyNormalised = remainingTime / (double)totalTime;
+            double difficultyNormalised = remainingTime / (double)totalTimeElapsed;
             difficulty = (int)(difficultyNormalised * 100);
             instructionsConfiguration = instructionsFactory.GetNewInstructions(difficulty);
             instructionsPanel.LoadConfiguration(instructionsConfiguration);

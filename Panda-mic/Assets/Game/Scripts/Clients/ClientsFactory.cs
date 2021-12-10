@@ -18,19 +18,19 @@ namespace LineUp
             int randomClient = UnityEngine.Random.Range(0, clientsData.clients.Length);
             ClientData clientData = clientsData.clients[randomClient];
 
-            System.Random r = new System.Random();
+            System.Random random = new System.Random();
             int chance = 95;
             int requestIdChance = 10;
             ClientConfiguration clientConfiguration = new ClientConfiguration
             {
-                temperature = r.Next(101) < chance ? UnityEngine.Random.Range(36.5f, instructions.temperature) : UnityEngine.Random.Range(instructions.temperature + 0.1f, 40f),
-                hasMask = instructions.maskRequired ? r.Next(101) < chance : false,
-                hasGloves = instructions.glovesRequired ? r.Next(101) < chance : false,
-                hasSymptoms = instructions.symptoms ? r.Next(101) > chance : false,
-                hasRequest = instructions.requestIdRequired ? r.Next(101) < chance : false,
-                hasCorrectRequest = instructions.requestIdRequired ? r.Next(101) < chance : false,
-                hasId = instructions.requestIdRequired ? r.Next(101) < chance : false,
-                hasEasterEgg = instructions.requestIdRequired ? r.Next(101) < requestIdChance : false
+                temperature = random.Next(101) < chance ? UnityEngine.Random.Range(36.5f, instructions.temperature) : UnityEngine.Random.Range(instructions.temperature + 0.1f, 40f),
+                hasMask = instructions.maskRequired && random.Next(101) < chance,
+                hasGloves = instructions.glovesRequired && random.Next(101) < chance,
+                hasSymptoms = instructions.symptoms && random.Next(101) > chance,
+                hasRequest = instructions.requestIdRequired && random.Next(101) < chance,
+                hasCorrectRequest = instructions.requestIdRequired && random.Next(101) < chance,
+                hasId = instructions.requestIdRequired && random.Next(101) < chance,
+                hasEasterEgg = instructions.requestIdRequired && random.Next(101) < requestIdChance
             };
 
             var tuple = new Tuple<ClientData, ClientConfiguration>(clientData, clientConfiguration);

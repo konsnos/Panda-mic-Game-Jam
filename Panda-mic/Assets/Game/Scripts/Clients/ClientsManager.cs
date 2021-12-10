@@ -157,7 +157,7 @@ namespace LineUp
 
         private static string[] wrongRequest = new string[]
         {
-            "excersise",
+            "exercise",
             "doctor",
             "work"
         };

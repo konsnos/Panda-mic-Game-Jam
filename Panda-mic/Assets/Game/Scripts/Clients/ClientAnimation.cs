@@ -8,10 +8,10 @@ namespace LineUp
     {
         [SerializeField] private Animator animator;
 
-        private static int bringNewClientParam = Animator.StringToHash("bringNew");
-        private static int acceptParam = Animator.StringToHash("accept");
-        private static int rejectParam = Animator.StringToHash("reject");
-        private static int exitParam = Animator.StringToHash("exit");
+        private static readonly int bringNewClientParam = Animator.StringToHash("bringNew");
+        private static readonly int acceptParam = Animator.StringToHash("accept");
+        private static readonly int rejectParam = Animator.StringToHash("reject");
+        private static readonly int exitParam = Animator.StringToHash("exit");
 
         public Client client;
 
@@ -20,7 +20,7 @@ namespace LineUp
         public UnityEvent RejectedEvent;
         public WaitingEvent WaitingEvent;
 
-        private bool isWaiting = false;
+        private bool isWaiting;
 
         public void BringNext()
         {
@@ -30,7 +30,7 @@ namespace LineUp
         public void Accept()
         {
             isWaiting = false;
-            StopCoroutine("DelayedPlaySymptoms");
+            StopCoroutine(nameof(DelayedPlaySymptoms));
 
             animator.SetTrigger(acceptParam);
         }
@@ -38,7 +38,7 @@ namespace LineUp
         public void Reject()
         {
             isWaiting = false;
-            StopCoroutine("DelayedPlaySymptoms");
+            StopCoroutine(nameof(DelayedPlaySymptoms));
 
             animator.SetTrigger(rejectParam);
         }
@@ -70,14 +70,14 @@ namespace LineUp
             isWaiting = true;
             client.PlaySymptoms();
 
-            StartCoroutine("DelayedPlaySymptoms");
+            StartCoroutine(nameof(DelayedPlaySymptoms));
         }
 
         private IEnumerator DelayedPlaySymptoms()
         {
             while (isWaiting)
             {
-                yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 4f));
+                yield return new WaitForSeconds(Random.Range(2f, 4f));
                 if (isWaiting)
                 {
                     client.PlaySymptoms();

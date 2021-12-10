@@ -8,10 +8,10 @@ namespace LineUp
 
         [Header("Animation")]
         [SerializeField] private Animator animator;
-        private static int isOpenParam = Animator.StringToHash("isOpen");
+        private static readonly int isOpenParam = Animator.StringToHash("isOpen");
         private bool isOpen = false;
 
-        private InstructionsConfiguration configuration;
+        private InstructionsConfiguration instructionsConfiguration;
 
         private void Start()
         {
@@ -23,14 +23,14 @@ namespace LineUp
 
         public void LoadConfiguration(InstructionsConfiguration newConfiguration)
         {
-            configuration = newConfiguration;
+            instructionsConfiguration = newConfiguration;
 
-            instructions[(int)InstructionType.temperature].UpdateText($"<={configuration.temperature:N1}°C");
-            instructions[(int)InstructionType.gloves].gameObject.SetActive(configuration.glovesRequired);
-            instructions[(int)InstructionType.mask].gameObject.SetActive(configuration.maskRequired);
-            instructions[(int)InstructionType.symptoms].gameObject.SetActive(configuration.symptoms);
-            instructions[(int)InstructionType.request].gameObject.SetActive(configuration.requestIdRequired);
-            instructions[(int)InstructionType.amount].UpdateText($"<={configuration.amountOfPeopleInside}");
+            instructions[(int)InstructionType.Temperature].UpdateText($"<={instructionsConfiguration.temperature:N1}°C");
+            instructions[(int)InstructionType.Gloves].gameObject.SetActive(instructionsConfiguration.glovesRequired);
+            instructions[(int)InstructionType.Mask].gameObject.SetActive(instructionsConfiguration.maskRequired);
+            instructions[(int)InstructionType.Symptoms].gameObject.SetActive(instructionsConfiguration.symptoms);
+            instructions[(int)InstructionType.Request].gameObject.SetActive(instructionsConfiguration.requestIdRequired);
+            instructions[(int)InstructionType.Amount].UpdateText($"<={instructionsConfiguration.amountOfPeopleInside}");
 
             // Open instructions
             if (!isOpen)
@@ -47,20 +47,20 @@ namespace LineUp
         /// <returns></returns>
         public bool IsValid(ClientConfiguration clientConfiguration, int amountOfPeopleInside)
         {
-            if (configuration.amountOfPeopleInside < amountOfPeopleInside + 1)
+            if (instructionsConfiguration.amountOfPeopleInside < amountOfPeopleInside + 1)
             {
                 Debug.Log("Failed amount");
                 return false;
             }
                 
 
-            if (clientConfiguration.temperature > configuration.temperature)
+            if (clientConfiguration.temperature > instructionsConfiguration.temperature)
             {
                 Debug.Log("Failed temperature");
                 return false;
             }
 
-            if (configuration.maskRequired)
+            if (instructionsConfiguration.maskRequired)
             {
                 if (!clientConfiguration.hasMask)
                 {
@@ -69,7 +69,7 @@ namespace LineUp
                 }
             }
 
-            if (configuration.glovesRequired)
+            if (instructionsConfiguration.glovesRequired)
             {
                 if (!clientConfiguration.hasGloves)
                 {
@@ -78,7 +78,7 @@ namespace LineUp
                 }
             }
 
-            if (configuration.symptoms)
+            if (instructionsConfiguration.symptoms)
             {
                 if (clientConfiguration.hasSymptoms)
                 {
@@ -88,7 +88,7 @@ namespace LineUp
                     
             }
 
-            if (configuration.requestIdRequired)
+            if (instructionsConfiguration.requestIdRequired)
             {
                 if (!clientConfiguration.hasId || !clientConfiguration.hasRequest || !clientConfiguration.hasCorrectRequest)
                 {
@@ -120,11 +120,11 @@ namespace LineUp
 
     public enum InstructionType
     {
-        temperature,
-        gloves,
-        mask,
-        symptoms,
-        request,
-        amount
+        Temperature,
+        Gloves,
+        Mask,
+        Symptoms,
+        Request,
+        Amount
     }
 }

@@ -45,12 +45,11 @@ namespace LineUp
 
         public void PlaySymptoms()
         {
-            if (ClientConfiguration.hasSymptoms)
-            {
-                int clip = Random.Range(0, symptomsClips.clips.Length);
-                symptomsAudioSource.clip = symptomsClips.clips[clip];
-                symptomsAudioSource.Play();
-            }
+            if (!ClientConfiguration.hasSymptoms) return;
+            
+            int clip = Random.Range(0, symptomsClips.clips.Length);
+            symptomsAudioSource.clip = symptomsClips.clips[clip];
+            symptomsAudioSource.Play();
         }
     }
 }

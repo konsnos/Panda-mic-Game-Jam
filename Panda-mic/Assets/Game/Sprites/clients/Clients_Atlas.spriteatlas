@@ -28,6 +28,8 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 694cbc9c5153db148bbcab1b0893a4a7, type: 3}
@@ -51,6 +53,8 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 56e7640b770da544495067140b98df27, type: 3}
     - {fileID: 102900000, guid: fa88befc4f9474044a6809947e1e4bd3, type: 3}
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: bf6ca400a0a3d2f458648f3f940a39be, type: 3}
@@ -214,5 +218,6 @@ SpriteAtlas:
   - client02-ID
   - client18-ID
   - client03-gloves
+  m_RenderDataMap: {}
   m_Tag: Clients_Atlas
   m_IsVariant: 0
