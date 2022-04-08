@@ -30,7 +30,7 @@ namespace LineUp
                 hasRequest = instructions.requestIdRequired && random.Next(101) < chance,
                 hasCorrectRequest = instructions.requestIdRequired && random.Next(101) < chance,
                 hasId = instructions.requestIdRequired && random.Next(101) < chance,
-                hasEasterEgg = instructions.requestIdRequired && random.Next(101) < requestIdChance
+                hasEasterEgg = false//instructions.requestIdRequired && random.Next(101) < requestIdChance
             };
 
             var tuple = new Tuple<ClientData, ClientConfiguration>(clientData, clientConfiguration);

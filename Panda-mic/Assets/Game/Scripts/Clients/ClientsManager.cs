@@ -27,7 +27,7 @@ namespace LineUp
         private List<ClientData> clientsInside;
 
         ///<summary>Amount of clients inside.</summary>
-        public int ClientsInside { get { return clientsInside.Count; } }
+        public int ClientsInside => clientsInside.Count;
 
         private void Awake()
         {
@@ -137,12 +137,12 @@ namespace LineUp
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class HandleClient : UnityEvent<ClientConfiguration>
     {
     }
 
-    [System.Serializable]
+    [Serializable]
     public class ClientControls
     {
         public TMP_Text thermometerTxt;
